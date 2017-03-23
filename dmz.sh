@@ -5,12 +5,12 @@ echo -ne "Masukan ip server : "
 read ipserver;
 
 touch /etc/network/if-up.d/iptables-dmz
-echo '#!/bin/sh' >>>> /etc/network/if-up.d/iptables-dmz
-echo 'iptables -A FORWARD -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT' >>>> /etc/network/if-up.d/iptables-dmz
-echo 'iptables -A OUTPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT' >>>> /etc/network/if-up.d/iptables-dmz
-echo '' >>>> /etc/network/if-up.d/iptables-dmz
-echo '#DNS' >>>> /etc/network/if-up.d/iptables-dmz
-echo 'iptables -A INPUT -p tcp -d '$iprouter' --dport 53 -j ACCEPT' >>>> /etc/network/if-up.d/iptables-dmz
+echo '#!/bin/sh' >> /etc/network/if-up.d/iptables-dmz
+echo 'iptables -A FORWARD -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT' >> /etc/network/if-up.d/iptables-dmz
+echo 'iptables -A OUTPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT' >> /etc/network/if-up.d/iptables-dmz
+echo '' >> /etc/network/if-up.d/iptables-dmz
+echo '#DNS' >> /etc/network/if-up.d/iptables-dmz
+echo 'iptables -A INPUT -p tcp -d '$iprouter' --dport 53 -j ACCEPT' >> /etc/network/if-up.d/iptables-dmz
 echo 'iptables -A FORWARD -p tcp -d '$ipserver' --dport 53 -j ACCEPT' >> /etc/network/if-up.d/iptables-dmz
 echo 'iptables -t nat -A PREROUTING -p tcp -d '$iprouter' --dport 53 -j DNAT --to '$ipserver':53' >> /etc/network/if-up.d/iptables-dmz
 echo '' >> /etc/network/if-up.d/iptables-dmz

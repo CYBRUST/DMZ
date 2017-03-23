@@ -1,8 +1,8 @@
-#!/usr/bin bash
+#!/bin/bash
 echo -ne "Masukan ip router : "
-read iprouter
+read iprouter;
 echo -ne "Masukan ip server : "
-read ipserver
+read ipserver;
 
 touch /etc/network/if-up.d/iptables-dmz
 echo '#!/bin/sh' > /etc/network/if-up.d/iptables-dmz

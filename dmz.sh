@@ -53,3 +53,4 @@ echo 'exit 0' > /etc/network/if-up.d/iptables-dmz
 
 chmod +x /etc/network/if-up.d/iptables-dmz
 read -n 1 -s -p "Press any key to continue"
+reboot
